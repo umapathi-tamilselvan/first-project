@@ -38,3 +38,6 @@ Route::get('/services',[HelloController::class,'services']);
 Route::get('/customers', [CustomerController::class, 'index']);
 Route::get('/customers/create', [CustomerController::class, 'create']);
 Route::post('/customers', [CustomerController::class, 'store']);
+Route::get('customers/{customer}', [CustomerController::class, 'show']);
+Route::get('customers/{customer}/edit', [CustomerController::class, 'edit']);
+Route::patch('customers/{customer}', [CustomerController::class, 'update']);
