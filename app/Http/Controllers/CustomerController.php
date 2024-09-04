@@ -16,16 +16,18 @@ class CustomerController extends Controller
     public function create()
     {
 
-        $customer=new Customer();
-        return view('customer.create' ,compact('customer'));
+        $customer = new Customer;
+
+        return view('customer.create', compact('customer'));
 
     }
 
-    public function validatedData(){
+    public function validatedData()
+    {
 
         return request()->validate([
-            'name'=>'required',
-            'email'=>'required|email'
+            'name' => 'required',
+            'email' => 'required|email',
         ]);
 
     }
@@ -33,7 +35,7 @@ class CustomerController extends Controller
     public function store()
     {
 
-        $customer=Customer::create($this->validatedData());
+        $customer = Customer::create($this->validatedData());
 
         return redirect('/customers/'.$customer->id);
 
@@ -54,16 +56,17 @@ class CustomerController extends Controller
     public function update(Customer $customer)
     {
 
-
         $customer->update($this->validatedData());
 
         return redirect('/customers');
     }
-    public function destroy(Customer $customer){
+
+    public function destroy(Customer $customer)
+    {
 
         $customer->delete();
-        return redirect('/customers');
 
+        return redirect('/customers');
 
     }
 }
